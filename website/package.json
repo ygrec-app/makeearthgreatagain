@@ -16,7 +16,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=makeearthgreatagain --branch=main --commit-dirty=true"
   },
   "dependencies": {
     "@astrojs/svelte": "^8.0.0",

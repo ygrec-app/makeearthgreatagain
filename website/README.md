@@ -9,4 +9,8 @@ npm install
 npm run dev      # http://localhost:4321
 npm run build
 npm run build-tokens   # regenerate src/styles/tokens.css from ../design.md
+npm run deploy   # build + ship to Cloudflare Pages (requires wrangler login)
 ```
+
+Live at <https://makeearthgreatagain.earth> via Cloudflare Pages
+(project: `makeearthgreatagain`).

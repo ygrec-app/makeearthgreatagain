@@ -3,6 +3,10 @@
     "lenis": {
       "command": "node",
       "args": [".claude/mcp-servers/lenis-mcp-server/dist/index.js"]
+    },
+    "cloudflare": {
+      "type": "http",
+      "url": "https://mcp.cloudflare.com/mcp"
     }
   }
 }

@@ -96,3 +96,13 @@ The site has two visual modes that flip the entire palette via `body[data-mode]`
 - **Pen file edits go through `mcp__pencil__batch_design`.** Frame IDs are stable; reuse them rather than recreating nodes. The `context` field on each node is where prompts/rationale live (e.g., the Seedance video prompts are stored on the category row headers).
 - **HMR over restart.** Astro+Vite handles edits live; killing the dev server breaks the user's workflow. Only kill it when a structural change (renaming the directory, swapping `astro.config.mjs`) requires it.
 - **UI verification.** After visual/animation/scroll changes, drive the dev server with Playwright or Chrome DevTools MCP before claiming done — don't rely on type checking or unit tests for feature correctness.
+
+## Deployment
+
+The site is hosted on **Cloudflare Pages** (project name: `makeearthgreatagain`) at <https://makeearthgreatagain.earth>. Deploys are **direct upload via wrangler**, not git-connected — pushing to GitHub does *not* trigger a deploy. Run `npm run deploy` from `website/` after every change you want live; it builds locally then ships `dist/` to Pages.
+
+Custom domain DNS lives on Cloudflare (zone `makeearthgreatagain.earth`). Apex and `www` are CNAMEs to `makeearthgreatagain.pages.dev`, both proxied. The Cloudflare zone also carries the Google Workspace MX/SPF/verification records — don't touch those.
+
+`public/_headers` is read by Pages on deploy and applies long-cache rules to `/mp4/*`, `/png/*`, `/svg/*`, and `/favicon.svg`. Edit it if you add a new media folder.
+
+To wire up GitHub auto-deploy later: connect the repo from Pages → Settings → Builds & deployments. Then `npm run deploy` becomes optional.
