@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lenis": {
+      "command": "node",
+      "args": [".claude/mcp-servers/lenis-mcp-server/dist/index.js"]
+    }
+  }
+}

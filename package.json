@@ -1,0 +1,14 @@
+{
+  "name": "mega",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "design:lint": "design.md lint design.md",
+    "design:export:tailwind": "design.md export design.md --format tailwind",
+    "design:export:dtcg": "design.md export design.md --format dtcg",
+    "design:spec": "design.md spec"
+  },
+  "devDependencies": {
+    "@google/design.md": "^0.1.1"
+  }
+}

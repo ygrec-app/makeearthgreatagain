@@ -1,0 +1,35 @@
+---
+import CategoryHeader from "./CategoryHeader.astro";
+import ProjectCard from "./ProjectCard.svelte";
+import type { CategoryView } from "../lib/projects";
+
+interface Props {
+  category: CategoryView;
+  learnMoreLabel?: string;
+  openProjectLabel?: string;
+}
+const {
+  category,
+  learnMoreLabel = "LEARN MORE",
+  openProjectLabel = "Open project",
+} = Astro.props;
+---
+
+<section class="category-row" data-category={category.slug}>
+  <CategoryHeader slug={category.slug} name={category.name} />
+  <div class="projects-grid">
+    {category.projects.map((p) => (
+      <ProjectCard
+        client:load
+        slug={p.slug}
+        title={p.title}
+        tagline={p.tagline}
+        body={p.body}
+        category={category.slug}
+        categoryName={category.name}
+        learnMoreLabel={learnMoreLabel}
+        openProjectLabel={openProjectLabel}
+      />
+    ))}
+  </div>
+</section>

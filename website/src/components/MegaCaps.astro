@@ -1,0 +1,74 @@
+---
+import "../styles/components/caps.css";
+import CapsHeader from "./CapsHeader.astro";
+import PriceTier from "./PriceTier.astro";
+import NotifyForm from "./NotifyForm.svelte";
+import { isLocale, t as tr, type Locale } from "../lib/i18n";
+
+const locale: Locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+const t = {
+  megaCapsSection: tr(locale, "megaCapsSection"),
+  megaCapsTitle: tr(locale, "megaCapsTitle"),
+  megaCapsDesc: tr(locale, "megaCapsDesc"),
+  soldOut: tr(locale, "soldOut"),
+  minimumLabel: tr(locale, "minimumLabel"),
+  suggestedLabel: tr(locale, "suggestedLabel"),
+  supporterLabel: tr(locale, "supporterLabel"),
+  benefactorLabel: tr(locale, "benefactorLabel"),
+  customLabel: tr(locale, "customLabel"),
+  customAmountPlaceholder: tr(locale, "customAmountPlaceholder"),
+  emailPlaceholder: tr(locale, "emailPlaceholder"),
+  privacyNotice: tr(locale, "privacyNotice"),
+  notifyMe: tr(locale, "notifyMe"),
+};
+---
+<section id="mega-caps-section">
+  <h2 class="section-title">
+    <span class="title-circle"></span>
+    <span class="title-text">{t.megaCapsSection}</span>
+  </h2>
+
+  <CapsHeader title={t.megaCapsTitle} description={t.megaCapsDesc} />
+
+  <div class="caps-content">
+    <div class="caps-image-container">
+      <img src="/png/mega-cap.png" alt="MEGA Cap" class="caps-image" />
+    </div>
+
+    <div class="caps-payment-section">
+      <div class="price-selector">
+        <div class="sold-out-label">{t.soldOut}</div>
+
+        <div class="price-options">
+          <PriceTier amount="€0" label={t.minimumLabel} />
+          <PriceTier amount="€20" label={t.suggestedLabel} />
+          <PriceTier amount="€50" label={t.supporterLabel} />
+          <PriceTier amount="€100" label={t.benefactorLabel} />
+        </div>
+
+        <div class="custom-price">
+          <div class="input-wrapper">
+            <span class="currency">€</span>
+            <input
+              type="number"
+              class="custom-amount"
+              min="0"
+              disabled
+              placeholder={t.customAmountPlaceholder}
+            />
+          </div>
+          <span class="label">{t.customLabel}</span>
+        </div>
+      </div>
+
+      <div class="notification-section">
+        <NotifyForm
+          client:load
+          placeholder={t.emailPlaceholder}
+          privacyNotice={t.privacyNotice}
+          notifyLabel={t.notifyMe}
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+/* Footer branding + contact */
+
+#footer-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-xxl) var(--space-gutter) var(--space-lg);
+  color: var(--text);
+}
+
+#footer-branding .vertical-mega-wordmark {
+  height: 12em;
+  width: auto;
+  display: block;
+  color: var(--text);
+}
+
+#footer-branding .vertical-mega-wordmark svg {
+  height: 100%;
+  width: auto;
+  fill: currentColor;
+}
+
+#footer-branding .vertical-mega-wordmark svg path,
+#footer-branding .vertical-mega-wordmark svg circle {
+  fill: currentColor;
+}
+
+#contact-footer {
+  --primary-30: color-mix(in srgb, var(--text) 30%, transparent);
+  padding: var(--space-xxl) var(--space-gutter);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  color: var(--text);
+}
+
+#contact-footer a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.25em;
+  font-family: var(--font-body-md-family);
+  font-size: var(--font-body-lg-size);
+  transition: border-color 0.2s ease;
+}
+
+#contact-footer a:hover {
+  border-bottom-color: var(--text);
+}
+
+#contact-footer .footer-separator {
+  color: var(--primary-30);
+  font-size: var(--font-body-lg-size);
+}
+
+#contact-footer .instagram-link {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contact-footer .instagram-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#contact-footer .instagram-link:hover svg {
+  transform: scale(1.1);
+}

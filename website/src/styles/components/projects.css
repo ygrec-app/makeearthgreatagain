@@ -1,0 +1,247 @@
+.projects-index {
+  width: 100%;
+  padding: 0 var(--space-gutter);
+  box-sizing: border-box;
+}
+
+.category-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-gutter);
+  width: 100%;
+  position: relative;
+}
+
+.category-row + .category-row {
+  margin-top: var(--space-row-gap);
+}
+
+.category-header {
+  position: sticky;
+  top: 0;
+  flex: 0 0 calc((100% - var(--space-gutter)) / 2);
+  min-width: 0;
+  height: 100vh;
+  align-self: flex-start;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  padding: 4em;
+  box-sizing: border-box;
+  color: var(--ink);
+  isolation: isolate;
+}
+
+.category-bg-video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -15%;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  z-index: 0;
+  filter: blur(calc(var(--scroll-velocity, 0) * 6px))
+    saturate(calc(1 - var(--scroll-velocity, 0) * 0.4));
+  transition: filter 0.18s linear;
+  will-change: filter, transform;
+}
+
+.category-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary-soft);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* Film-grain overlay — unifies the 5 disparate video sources under a shared
+   grain. SVG fractal noise tiled at 256×256, blended in with mix-blend-mode
+   so the grain rides on the underlying luma instead of sitting on top as a
+   flat layer. Pointer-events off so it never blocks card interactions. */
+.category-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 256px 256px;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
+.category-symbol {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  z-index: 2;
+  color: var(--ink);
+}
+
+.category-symbol svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+}
+
+.category-title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-h2-mono-family);
+  font-size: var(--font-h2-mono-size);
+  font-weight: var(--font-h2-mono-weight);
+  line-height: var(--font-h2-mono-line-height);
+  letter-spacing: var(--font-h2-mono-letter-spacing);
+  text-transform: var(--font-h2-mono-text-transform);
+  color: var(--ink);
+  text-align: center;
+}
+
+.projects-grid {
+  flex: 0 0 calc((100% - var(--space-gutter)) / 2);
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-row-gap);
+  padding: 0;
+  justify-items: stretch;
+  align-content: start;
+}
+
+@media (max-width: 768px) {
+  .category-row {
+    flex-direction: column;
+  }
+  .category-header {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+  }
+  .projects-grid {
+    width: 100%;
+    flex: 0 0 auto;
+    grid-template-columns: 1fr;
+    gap: 2em;
+    padding: 2em 0;
+  }
+}
+
+/* Overlay */
+.project-overlay-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.project-overlay-panel {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--primary);
+  color: var(--ink);
+  padding: 32px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.project-overlay-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 2.5em;
+  height: 2.5em;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.project-overlay-close:hover {
+  background: var(--ink);
+  color: var(--primary);
+}
+
+.project-overlay-title {
+  margin: 0 0 0.25em 0;
+  font-family: var(--font-project-title-family);
+  font-size: var(--font-project-title-size);
+  font-weight: var(--font-project-title-weight);
+  line-height: var(--font-project-title-line-height);
+}
+
+.project-overlay-meta {
+  font-family: var(--font-h2-mono-family);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 1.5em;
+}
+
+.project-overlay-body {
+  font-family: var(--font-body-lg-family);
+  font-size: var(--font-body-md-size);
+  line-height: var(--font-body-md-line-height);
+}
+
+.project-overlay-body p {
+  margin: 0 0 1em 0;
+}
+
+.project-overlay-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1.5em;
+  padding: 0.6em 1em;
+  border: 1px solid var(--ink);
+  background: transparent;
+  font-family: var(--font-body-sm-family);
+  font-size: var(--font-body-sm-size);
+  font-weight: var(--font-body-sm-weight);
+  letter-spacing: var(--font-body-sm-letter-spacing);
+  text-transform: var(--font-body-sm-text-transform);
+  color: var(--ink);
+}
+
+.project-overlay-cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.project-overlay-cta-badge {
+  display: inline-block;
+  margin-left: 0.25em;
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--primary);
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+}

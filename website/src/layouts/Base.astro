@@ -1,0 +1,47 @@
+---
+import "../styles/global.css";
+import "../styles/tokens.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const lang = Astro.currentLocale ?? "en";
+const pageTitle = title ?? "MEGA — Make Earth Great Again";
+const pageDesc = description ?? "Nonprofit initiative accelerating resource-conscious technologies.";
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={pageDesc} />
+    <title>{pageTitle}</title>
+  </head>
+  <body data-mode="light">
+    <slot />
+    <script>
+      import Lenis from "lenis";
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({ smoothWheel: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      // Mode persistence — toggle component (Worker B) writes to localStorage["mega:mode"]
+      const stored = localStorage.getItem("mega:mode");
+      const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+      const initial = stored ?? (prefersDark ? "drenched" : "light");
+      document.body.dataset.mode = initial;
+
+      // Expose lenis on window for cross-island access (overlay open/close,
+      // anchor scrolls, etc.)
+      (window as any).__lenis = lenis;
+    </script>
+  </body>
+</html>

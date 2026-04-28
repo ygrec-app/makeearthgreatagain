@@ -1,0 +1,131 @@
+/* Project card + portal effect.
+
+   The "portal" is the brand signature. A 250px-diameter circle of inverted
+   polarity sits at the card's center — outside the circle, white text on
+   primary; inside the circle, primary text on primary-soft. The clip layer
+   re-renders the SAME content with identical layout, so words and link land
+   in the exact same positions across the boundary. Any layout drift between
+   .card-content and .card-clip breaks the illusion. */
+
+.project-card {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: var(--card-text);
+  /* 40px notch on the top-right corner */
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 200ms ease;
+  container-type: inline-size;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--card-clip-text);
+  outline-offset: -4px;
+}
+
+.card-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(380px, 50%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--card-circle);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-content,
+.card-clip {
+  position: absolute;
+  inset: 0;
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: var(--font-body-md-family);
+}
+
+.card-content {
+  z-index: 2;
+  color: var(--card-text);
+}
+
+.card-clip {
+  z-index: 3;
+  color: var(--card-clip-text);
+  /* Circle clip aligned with .card-circle. Use cqw so the radius tracks the
+     card's width (matching .card-circle's width: min(380px, 50%)) — plain %
+     in clip-path resolves against sqrt(w²+h²)/√2, which drifts on tall cards. */
+  clip-path: circle(min(190px, 25cqw) at 50% 50%);
+  pointer-events: none;
+}
+
+.card-title {
+  margin: 0;
+  font-family: var(--font-project-title-family);
+  font-size: 2.25rem;
+  font-weight: var(--font-project-title-weight);
+  line-height: var(--font-project-title-line-height);
+  letter-spacing: 0.005em;
+}
+
+.card-tagline {
+  margin: 0;
+  font-family: var(--font-body-lg-family);
+  font-size: var(--font-body-lg-size);
+  font-weight: var(--font-body-lg-weight);
+  line-height: var(--font-body-lg-line-height);
+  max-width: 22ch;
+}
+
+.card-link {
+  align-self: flex-start;
+  font-family: var(--font-body-sm-family);
+  font-size: var(--font-body-sm-size);
+  font-weight: var(--font-body-sm-weight);
+  letter-spacing: var(--font-body-sm-letter-spacing);
+  text-transform: var(--font-body-sm-text-transform);
+  border: 1px solid currentColor;
+  padding: 0.4em 0.6em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.card-link .arrow {
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+
+.project-card:hover .card-link .arrow {
+  transform: translateX(0.4em);
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    height: 500px;
+    max-width: 340px;
+  }
+  .card-content,
+  .card-clip {
+    padding: 24px;
+  }
+  .card-circle {
+    width: 250px;
+  }
+  .card-clip {
+    clip-path: circle(125px at 50% 50%);
+  }
+}

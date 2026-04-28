@@ -1,0 +1,31 @@
+---
+import horizontalRaw from "../svg/mega.svg?raw";
+import verticalRaw from "../svg/vertical-mega.svg?raw";
+
+interface Props {
+  variant?: "horizontal" | "vertical";
+  class?: string;
+}
+const { variant = "horizontal", class: className } = Astro.props;
+
+const raw = variant === "vertical" ? verticalRaw : horizontalRaw;
+
+// Letters use --text (primary in light, ink in drenched).
+// Microcopy fills inverse via --surface (ink/white in light, primary in drenched).
+const themed = raw
+  .replace(/fill="#4048F3"/gi, 'fill="var(--text)"')
+  .replace(/fill="rgb\(64,\s*72,\s*243\)"/gi, 'fill="var(--text)"')
+  .replace(/fill="white"/gi, 'fill="var(--surface)"')
+  .replace(/fill="#FFFFFF"/gi, 'fill="var(--surface)"')
+  .replace(/<svg /i, `<svg class="mega-wordmark mega-wordmark--${variant}${className ? " " + className : ""}" preserveAspectRatio="xMidYMid meet" `);
+---
+<Fragment set:html={themed} />
+
+<style>
+  :global(.mega-wordmark) {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+</style>

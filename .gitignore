@@ -1,0 +1,43 @@
+node_modules/
+.DS_Store
+
+# Astro / Vite
+website/dist/
+website/.astro/
+website/.vite/
+.astro/
+
+# Generated tokens (rebuilt from design.md by predev/prebuild)
+website/src/styles/tokens.css
+
+# Test artifacts
+website/test-results/
+website/playwright-report/
+
+# Logs / debug
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Replicate prediction intermediates (moved into place, not committed)
+replicate-prediction-*.mp4
+replicate-prediction-*.png
+replicate-prediction-*.svg
+
+# Supreme-leader worker logs (historical)
+.supreme-leader/
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+
+# Claude Code per-project state (MCP server sources, local settings, skills)
+.claude/
+
+# playwright-mcp debug logs
+.playwright-mcp/

@@ -1,0 +1,42 @@
+---
+import { translations } from "../lib/localization";
+
+interface Props {
+  locale?: "en" | "fr";
+}
+const { locale = "en" } = Astro.props;
+const copy = translations[locale].missionStatement;
+---
+<section class="mission" id="mission">
+  <div class="mission__inner">
+    <p class="mission__copy" set:html={copy}></p>
+  </div>
+</section>
+
+<style>
+  .mission {
+    width: 100%;
+    padding: var(--space-section) var(--space-gutter);
+    background: var(--surface);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+  }
+  .mission__inner {
+    max-width: 1600px;
+    width: 100%;
+    text-align: center;
+  }
+  .mission__copy {
+    font-family: var(--font-mission-family);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: var(--font-mission-weight);
+    line-height: var(--font-mission-line-height);
+    color: var(--text);
+    margin: 0;
+  }
+  .mission__copy :global(.mission-bold) {
+    font-weight: 700;
+    font-style: italic;
+  }
+</style>

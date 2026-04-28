@@ -1,0 +1,32 @@
+---
+import type { CategorySlug } from "../lib/projects";
+
+interface Props {
+  slug: CategorySlug;
+  name: string;
+}
+const { slug, name } = Astro.props;
+
+// Inline SVG glyphs per category. Stroke is set via CSS (currentColor).
+const symbols: Record<CategorySlug, string> = {
+  unite:   `<svg viewBox="0 0 80 80"><circle cx="28" cy="40" r="20"/><circle cx="52" cy="40" r="20"/></svg>`,
+  protect: `<svg viewBox="0 0 80 80"><path d="M40 8 L68 22 V44 C68 60 56 70 40 74 C24 70 12 60 12 44 V22 Z"/></svg>`,
+  restore: `<svg viewBox="0 0 80 80"><path d="M64 16 A28 28 0 1 0 68 48"/><polyline points="64,8 64,20 52,20"/></svg>`,
+  feed:    `<svg viewBox="0 0 80 80"><path d="M40 12 C28 24 28 44 40 56 C52 44 52 24 40 12 Z"/><line x1="40" y1="56" x2="40" y2="72"/></svg>`,
+  shift:   `<svg viewBox="0 0 80 80"><polyline points="14,40 50,40 50,28 66,44 50,60 50,48 14,48"/></svg>`,
+};
+---
+
+<div class="category-header" data-category={slug}>
+  <video
+    class="category-bg-video"
+    src={`/mp4/${slug}.mp4`}
+    muted
+    playsinline
+    preload="auto"
+    data-category-video
+    data-category={slug}
+  ></video>
+  <div class="category-symbol" aria-hidden="true" set:html={symbols[slug]}></div>
+  <h2 class="category-title">{name}</h2>
+</div>

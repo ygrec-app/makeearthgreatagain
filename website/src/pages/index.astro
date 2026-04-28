@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.svelte";
+import MEGAWordmark from "../components/MEGAWordmark.astro";
+import Mission from "../components/Mission.astro";
+import ProjectsIndex from "../components/ProjectsIndex.astro";
+import MegaCaps from "../components/MegaCaps.astro";
+import Footer from "../components/Footer.astro";
+import Cursor from "../components/Cursor.svelte";
+import { isLocale, t as tr, type Locale } from "../lib/i18n";
+
+const locale: Locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en";
+---
+<Base>
+  <Cursor client:load />
+  <Hero
+    client:load
+    {locale}
+    scrollLabel={tr(locale, "scroll")}
+    languageLabel={tr(locale, "language")}
+    colorModeLabel={tr(locale, "colorMode")}
+    lightLabel={tr(locale, "light")}
+    drenchedLabel={tr(locale, "drenched")}
+  >
+    <MEGAWordmark variant="horizontal" />
+  </Hero>
+  <Mission {locale} />
+  <ProjectsIndex
+    lang={locale}
+    learnMoreLabel={tr(locale, "learnMoreLabel")}
+    openProjectLabel={tr(locale, "openProject")}
+    closeLabel={tr(locale, "close")}
+    enterMegaverseLabel={tr(locale, "enterMegaverse")}
+  />
+  <MegaCaps />
+  <Footer />
+</Base>
+
+<script>
+  import { initMotion } from "../lib/motion.ts";
+  import { initCategoryVideos } from "../lib/video.ts";
+
+  function boot() {
+    initMotion();
+    initCategoryVideos();
+  }
+
+  if (document.readyState === "complete") {
+    boot();
+  } else {
+    window.addEventListener("load", boot, { once: true });
+  }
+</script>

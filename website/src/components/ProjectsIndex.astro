@@ -1,0 +1,38 @@
+---
+import "../styles/components/projects.css";
+import "../styles/components/card.css";
+import CategoryRow from "./CategoryRow.astro";
+import ProjectOverlay from "./ProjectOverlay.svelte";
+import { loadCategoriesWithProjects, type Lang } from "../lib/projects";
+
+interface Props {
+  lang?: Lang;
+  learnMoreLabel?: string;
+  openProjectLabel?: string;
+  closeLabel?: string;
+  enterMegaverseLabel?: string;
+}
+const {
+  lang = "en",
+  learnMoreLabel,
+  openProjectLabel,
+  closeLabel,
+  enterMegaverseLabel,
+} = Astro.props;
+const categories = await loadCategoriesWithProjects(lang);
+---
+
+<section class="projects-index" id="projects">
+  {categories.map((c) => (
+    <CategoryRow
+      category={c}
+      learnMoreLabel={learnMoreLabel}
+      openProjectLabel={openProjectLabel}
+    />
+  ))}
+  <ProjectOverlay
+    client:load
+    closeLabel={closeLabel}
+    enterMegaverseLabel={enterMegaverseLabel}
+  />
+</section>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  amount: string;
+  label: string;
+}
+const { amount, label } = Astro.props;
+---
+<button class="price-option" disabled>
+  <span class="amount">{amount}</span>
+  <span class="label">{label}</span>
+</button>
