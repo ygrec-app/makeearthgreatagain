@@ -1,0 +1,11 @@
+# Cloudflare Pages cache headers.
+# Static media never changes once committed — give it a long-lived immutable
+# cache so repeat visits don't re-download videos.
+/mp4/*
+  Cache-Control: public, max-age=31536000, immutable
+/png/*
+  Cache-Control: public, max-age=31536000, immutable
+/svg/*
+  Cache-Control: public, max-age=31536000, immutable
+/favicon.svg
+  Cache-Control: public, max-age=31536000, immutable

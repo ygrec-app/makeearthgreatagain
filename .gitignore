@@ -10,6 +10,9 @@ website/.vite/
 # Generated tokens (rebuilt from design.md by predev/prebuild)
 website/src/styles/tokens.css
 
+# Generated OG image (rebuilt from public/svg/mega.svg by predev/prebuild)
+website/public/og.png
+
 # Test artifacts
 website/test-results/
 website/playwright-report/
