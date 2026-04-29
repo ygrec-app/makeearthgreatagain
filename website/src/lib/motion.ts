@@ -127,16 +127,18 @@ export function initMotion(): void {
         ease: "power3.out",
       });
 
-      // Fade each placeholder out in sync with its corresponding letter landing
+      // Fade each placeholder out only as its filled letter is landing — the
+      // ghost should still be visible until the flying letter overlaps it, so
+      // the swap feels like the letter is filling in, not appearing on empty.
       tl.to(
         ghosts,
         {
           autoAlpha: 0,
-          duration: 0.6,
+          duration: 0.4,
           stagger: 0.25,
-          ease: "power2.out",
+          ease: "power1.in",
         },
-        0,
+        1.5,
       );
 
       // Microcopy: pop in opaque-and-huge the moment MEGA is done, then shrink
