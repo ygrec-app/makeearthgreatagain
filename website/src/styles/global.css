@@ -12,6 +12,13 @@
   :root {
     --space-gutter: 5vw;
     --space-row-gap: 6vh;
+    --space-section: 96px;
+    --space-xxl: 48px;
+    --font-h1-size: 2.75rem;
+    --font-h2-mono-size: 2rem;
+    --font-project-title-size: 2.25rem;
+    --font-mission-size: 2rem;
+    --font-body-lg-size: 1.125rem;
   }
 }
 

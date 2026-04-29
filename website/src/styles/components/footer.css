@@ -75,3 +75,21 @@
 #contact-footer .instagram-link:hover svg {
   transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+  #footer-branding .vertical-mega-wordmark {
+    height: 8em;
+  }
+  #contact-footer {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--space-gutter);
+  }
+  #contact-footer a {
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+  #contact-footer .footer-separator {
+    font-size: 0.95rem;
+  }
+}

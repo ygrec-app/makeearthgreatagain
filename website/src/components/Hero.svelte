@@ -143,6 +143,38 @@
     color: #fff;
     opacity: 0.4;
   }
+  @media (max-width: 768px) {
+    .hero__grid {
+      -webkit-mask-image:
+        radial-gradient(
+          circle var(--grid-mask) at 50% 50%,
+          #000 0%,
+          #000 60%,
+          transparent 100%
+        ),
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          #000 14%,
+          #000 76%,
+          transparent 100%
+        );
+      mask-image:
+        radial-gradient(
+          circle var(--grid-mask) at 50% 50%,
+          #000 0%,
+          #000 60%,
+          transparent 100%
+        ),
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          #000 14%,
+          #000 76%,
+          transparent 100%
+        );
+    }
+  }
 .hero__top-right {
     position: fixed;
     top: var(--space-lg);

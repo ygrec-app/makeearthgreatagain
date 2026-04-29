@@ -218,9 +218,17 @@
 }
 
 @media (max-width: 768px) {
+  #mega-caps-section {
+    overflow-x: clip;
+  }
+  #mega-caps-section .section-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    flex-wrap: wrap;
+    text-align: center;
+  }
   .price-options {
     grid-template-columns: repeat(2, 1fr);
   }
-  .caps-main-title { font-size: 2.5rem; }
-  .sold-out-label { font-size: 2.5rem; }
+  .caps-main-title { font-size: 2rem; }
+  .sold-out-label { font-size: 2rem; }
 }

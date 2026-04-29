@@ -115,17 +115,27 @@
 
 @media (max-width: 768px) {
   .project-card {
-    height: 500px;
-    max-width: 340px;
+    height: auto;
+    min-height: 420px;
+    max-width: none;
+    width: 100%;
   }
   .card-content,
   .card-clip {
     padding: 24px;
   }
   .card-circle {
-    width: 250px;
+    width: 120px;
+    top: auto;
+    bottom: 24px;
+    left: auto;
+    right: 24px;
+    transform: none;
   }
   .card-clip {
-    clip-path: circle(125px at 50% 50%);
+    clip-path: circle(60px at calc(100% - 84px) calc(100% - 84px));
+  }
+  .card-title {
+    font-size: 1.75rem;
   }
 }
