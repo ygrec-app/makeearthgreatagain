@@ -45,9 +45,19 @@ const locale: Locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : "en
     initCategoryVideos();
   }
 
-  if (document.readyState === "complete") {
-    boot();
+  // Run as soon as the DOM and fonts are ready — don't wait for window.load,
+  // which blocks on the 5 category videos and adds 1-2s of delay before the
+  // hero animation initializes.
+  function ready() {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(boot);
+    } else {
+      boot();
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", ready, { once: true });
   } else {
-    window.addEventListener("load", boot, { once: true });
+    ready();
   }
 </script>
