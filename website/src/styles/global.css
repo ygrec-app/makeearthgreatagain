@@ -26,13 +26,15 @@
    Reduced-motion users skip the JS animation entirely, so override here. */
 html:not(.motion-ready) .hero__wordmark,
 html:not(.motion-ready) .hero__top-right,
-html:not(.motion-ready) .scroll-indicator {
+html:not(.motion-ready) .scroll-indicator,
+html:not(.motion-ready) .hero__grid {
   visibility: hidden;
 }
 @media (prefers-reduced-motion: reduce) {
   html:not(.motion-ready) .hero__wordmark,
   html:not(.motion-ready) .hero__top-right,
-  html:not(.motion-ready) .scroll-indicator {
+  html:not(.motion-ready) .scroll-indicator,
+  html:not(.motion-ready) .hero__grid {
     visibility: visible;
   }
 }
