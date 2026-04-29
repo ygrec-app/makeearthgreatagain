@@ -121,13 +121,19 @@
 @media (max-width: 768px) {
   .category-row {
     flex-direction: column;
+    align-items: stretch;
   }
   .category-header {
-    position: static;
+    position: relative;
     flex: 0 0 auto;
     width: 100%;
     height: auto;
     min-height: 320px;
+    padding: 2em;
+  }
+  .category-bg-video {
+    top: 0;
+    height: 100%;
   }
   .projects-grid {
     width: 100%;
