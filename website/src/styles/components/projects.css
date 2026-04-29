@@ -251,3 +251,36 @@
   letter-spacing: 0.15em;
   line-height: 1;
 }
+
+@media (max-width: 768px) {
+  .project-overlay-scrim {
+    padding: 0;
+    align-items: stretch;
+  }
+  .project-overlay-panel {
+    width: 100%;
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding: 24px 20px 32px;
+    border-radius: 0;
+  }
+  .project-overlay-close {
+    top: 12px;
+    right: 12px;
+    width: 2.25em;
+    height: 2.25em;
+    font-size: 1rem;
+  }
+  .project-overlay-title {
+    font-size: 1.75rem;
+    padding-right: 2.5em;
+    overflow-wrap: break-word;
+  }
+  .project-overlay-meta {
+    font-size: 0.8rem;
+    margin-bottom: 1em;
+  }
+  .project-overlay-body {
+    font-size: 0.95rem;
+  }
+}
