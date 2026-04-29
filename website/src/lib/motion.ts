@@ -14,6 +14,7 @@ export function initMotion(): void {
   const heroSection = document.querySelector<HTMLElement>(".hero");
   const heroWordmark = document.querySelector<HTMLElement>(".hero__wordmark");
   const heroSvg = heroWordmark?.querySelector<SVGSVGElement>("svg.mega-wordmark");
+  const heroGrid = document.querySelector<SVGSVGElement>(".hero__grid");
   const heroToggles = document.querySelector<HTMLElement>(".hero__top-right");
   const scrollIndicator = document.querySelector<HTMLElement>(".scroll-indicator");
 
@@ -94,6 +95,29 @@ export function initMotion(): void {
           anticipatePin: 1,
         },
       });
+
+      // Begin with a small, subtle vignette of grid in the center; expand the
+      // radial mask outward and scale up so the perspective room resolves into
+      // view as MEGA assembles.
+      if (heroGrid) {
+        gsap.set(heroGrid, {
+          transformOrigin: "50% 50%",
+          scale: 0.85,
+          autoAlpha: 0.18,
+          "--grid-mask": "32%",
+        });
+        tl.to(
+          heroGrid,
+          {
+            scale: 1,
+            autoAlpha: 1,
+            "--grid-mask": "100%",
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          0,
+        );
+      }
 
       tl.to(lettersInReadingOrder, {
         x: 0,

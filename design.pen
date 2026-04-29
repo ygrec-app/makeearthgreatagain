@@ -4084,6 +4084,28 @@
           "layout": "none",
           "children": [
             {
+              "type": "path",
+              "id": "R0yCd",
+              "x": 0,
+              "y": 0,
+              "name": "perspectiveGrid",
+              "opacity": 0.7,
+              "geometry": "M0 0l288 180m-108-180l216 180m-36-180l144 180m36-180l72 180m108-180l0 180m180-180l-72 180m252-180l-144 180m324-180l-216 180m396-180l-288 180m-1152 720l288-180m-108 180l216-180m-36 180l144-180m36 180l72-180m108 180l0-180m180 180l-72-180m252 180l-144-180m324 180l-216-180m396 180l-288-180m-1152-540l288 108m-288 72l288 36m-288 144l288-36m-288 216l288-108m1152-432l-288 108m288 72l-288 36m288 144l-288-36m288 216l-288-108m-864-432l864 0 0 540-864 0z m-72-45l1008 0 0 630-1008 0z m-72-45l1152 0 0 720-1152 0z m-72-45l1296 0 0 810-1296 0z m324 135l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m-756-432l864 0m-864 108l864 0m-864 108l864 0m-864 108l864 0",
+              "viewBox": [
+                0,
+                0,
+                1440,
+                900
+              ],
+              "width": 1440,
+              "height": 900,
+              "stroke": {
+                "align": "center",
+                "thickness": 1,
+                "fill": "#5B7FFF"
+              }
+            },
+            {
               "type": "frame",
               "id": "Y45N7P",
               "layoutPosition": "absolute",
@@ -4182,20 +4204,20 @@
               "id": "Jo5ZX",
               "type": "ref",
               "ref": "s6Dw5s",
-              "x": 160,
-              "y": 167,
-              "width": 1120,
-              "height": 565,
+              "x": 320,
+              "y": 248,
+              "width": 800,
+              "height": 404,
               "layoutPosition": "absolute",
               "name": "heroMega",
               "descendants": {
                 "IPKTd": {
-                  "width": 1120,
-                  "height": 565
+                  "width": 800,
+                  "height": 404
                 },
                 "Ovvnf": {
-                  "width": 1120,
-                  "height": 565
+                  "width": 800,
+                  "height": 404
                 }
               }
             },
@@ -5552,6 +5574,28 @@
           "layout": "none",
           "children": [
             {
+              "type": "path",
+              "id": "cs2Lr",
+              "x": 0,
+              "y": 0,
+              "name": "perspectiveGrid",
+              "opacity": 0.45,
+              "geometry": "M0 0l288 180m-108-180l216 180m-36-180l144 180m36-180l72 180m108-180l0 180m180-180l-72 180m252-180l-144 180m324-180l-216 180m396-180l-288 180m-1152 720l288-180m-108 180l216-180m-36 180l144-180m36 180l72-180m108 180l0-180m180 180l-72-180m252 180l-144-180m324 180l-216-180m396 180l-288-180m-1152-540l288 108m-288 72l288 36m-288 144l288-36m-288 216l288-108m1152-432l-288 108m288 72l-288 36m288 144l-288-36m288 216l-288-108m-864-432l864 0 0 540-864 0z m-72-45l1008 0 0 630-1008 0z m-72-45l1152 0 0 720-1152 0z m-72-45l1296 0 0 810-1296 0z m324 135l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m108-540l0 540m-756-432l864 0m-864 108l864 0m-864 108l864 0m-864 108l864 0",
+              "viewBox": [
+                0,
+                0,
+                1440,
+                900
+              ],
+              "width": 1440,
+              "height": 900,
+              "stroke": {
+                "align": "center",
+                "thickness": 1,
+                "fill": "#FFFFFF"
+              }
+            },
+            {
               "type": "frame",
               "id": "xGtzG",
               "layoutPosition": "absolute",
@@ -5654,21 +5698,21 @@
               "id": "iAuBA",
               "type": "ref",
               "ref": "s6Dw5s",
-              "x": 160,
-              "y": 167,
-              "width": 1120,
-              "height": 565,
+              "x": 320,
+              "y": 248,
+              "width": 800,
+              "height": 404,
               "layoutPosition": "absolute",
               "name": "heroMega",
               "descendants": {
                 "IPKTd": {
-                  "width": 1120,
-                  "height": 565,
+                  "width": 800,
+                  "height": 404,
                   "fill": "$ink"
                 },
                 "Ovvnf": {
-                  "width": 1120,
-                  "height": 565,
+                  "width": 800,
+                  "height": 404,
                   "fill": "$primary"
                 }
               }
